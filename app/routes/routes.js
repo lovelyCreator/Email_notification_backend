@@ -5,7 +5,8 @@ module.exports = app => {
   var router = require("express").Router();
 
   // Create a new Spot
-  router.get("/emailSend", controller.emailHome);
+  router.post("/emailSend", controller.emailHome);
+  router.get("/unset", controller.unset)
 
 
   app.use("/api", router);
