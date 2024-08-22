@@ -49,35 +49,36 @@ app.get("/test", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
-require("./app/routes/clinical.route")(app);
-require("./app/routes/facilities.route")(app);
-require("./app/routes/job.routes")(app);
-require("./app/routes/admin.route.js")(app);
-require('./app/routes/bid.route.js')(app);
-const { setInvoices } = require("./app/controllers/facilities.controller.js");
+// require("./app/routes/clinical.route")(app);
+// require("./app/routes/facilities.route")(app);
+// require("./app/routes/job.routes")(app);
+// require("./app/routes/admin.route.js")(app);
+// require('./app/routes/bid.route.js')(app);
+require('./app/routes/routes.js')(app);
+// const { setInvoices } = require("./app/controllers/facilities.controller.js");
 const { log } = require("console");
 // require("./app/routes/image.routes")(app);
 
 
-let invoices = [];
+// let invoices = [];
 
-// Scheduled task to generate invoices every Friday at 6 PM
-cron.schedule('50 10 * * 6', () => {
-    // Example facility data (you can replace this with actual data from your database)
-    const facilities = [
-        { id: 1, name: 'Facility A', amountDue: 100 },
-        { id: 2, name: 'Facility B', amountDue: 200 },
-    ];
+// // Scheduled task to generate invoices every Friday at 6 PM
+// cron.schedule('50 10 * * 6', () => {
+//     // Example facility data (you can replace this with actual data from your database)
+//     const facilities = [
+//         { id: 1, name: 'Facility A', amountDue: 100 },
+//         { id: 2, name: 'Facility B', amountDue: 200 },
+//     ];
     
-    facilities.forEach(facility => {
-        const invoicePath = generateInvoice(facility); // Call the function from the imported module
-        invoices.push({ facilityId: facility.id, path: invoicePath });
-    });
-    console.log('Invoices generated:', invoices);
+//     facilities.forEach(facility => {
+//         const invoicePath = generateInvoice(facility); // Call the function from the imported module
+//         invoices.push({ facilityId: facility.id, path: invoicePath });
+//     });
+//     console.log('Invoices generated:', invoices);
     
-    // Set the invoices in the invoice routes
-    setInvoices(invoices);
-});
+//     // Set the invoices in the invoice routes
+//     setInvoices(invoices);
+// });
 
 
 // set port, listen for requests
